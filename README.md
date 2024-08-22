@@ -117,8 +117,7 @@ Ví dụ: Minh họa cho tác dụng của use cases là có logic logout tài k
 ### Tầng Data
 Tầng Data thường được chia thành ba phần chính:
 
-**Repositories**
-Là các lớp triển khai cụ thể của các abstract repositories, implements phương thức định nghĩa trong abstract repositories. Ví dụ, UserRepositoryImpl có thể triển khai phương thức getUserById bằng cách gọi API hoặc cơ sở dữ liệu.
+**Repositories**: Là các lớp triển khai cụ thể của các abstract repositories, implements phương thức định nghĩa trong abstract repositories.
 
 **Data Sources**
 Remote Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu từ xa, như API RESTful, ...
