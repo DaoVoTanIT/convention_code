@@ -90,6 +90,15 @@ Example:
 - Loaded
 - LoadFailed
 ```
+### Kiến trúc clean architecture
+The figure bellow represents the variation applied in this project:
+
+![architecture](./art/arch_2.png?raw=true)
+
+Sử dụng 3 tầng: Presentation, Domain and Data.
+
+### The presentation layer (UI)
+
 ## Cấu trúc source
 
 >
