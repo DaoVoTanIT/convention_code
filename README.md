@@ -143,21 +143,6 @@ class LoginRepositoryImpl implements AuthenticateRepository {
       return Left(ConnectionFailure());
     }
   }
-
-  @override
-  Future<Either<Failure, void>> signUp(String phoneNumber, String passWord, String email) async {
-    final isConnected = await networkInfo.isConnected;
-    if (isConnected) {
-      try {
-        final result = await authenticateDataSource.signUp(phoneNumber, passWord, email);
-        return Right(result);
-      } on ServerException {
-        return Left(ServerFailure());
-      }
-    } else {
-      return Left(ConnectionFailure());
-    }
-  }
 }
 ````
 **Data Sources**:
@@ -165,6 +150,28 @@ class LoginRepositoryImpl implements AuthenticateRepository {
 Remote Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu từ xa, như API RESTful, ...
 
 Local Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu cục bộ như SQLite, SharedPreferences,...
+````dart
+abstract class AuthenticateDataSource {
+  Future<void> login(String userName, String passWord);
+  Future<void> signUp(String phoneNumber, String passWord, String email);
+}
+
+class AuthenticateDataSourceImpl implements AuthenticateDataSource {
+  late final Dio dio;
+  AuthenticateDataSourceImpl({required this.dio});
+  @override
+  Future<void> login(String userName, String passWord) async {
+    final response = await dio.post(Constants.login,
+        data: {'userName': userName, 'password': passWord});
+
+    await setValueString(SharedPrefKey.domain, Constants.domain);
+    await setValueString(
+        SharedPrefKey.tokenUser, response.data['data']['accessToken']);
+    await setValueString(
+        SharedPrefKey.idUser, response.data['data']['user']['id']);
+    print(response.data['data']['accessToken']);
+  }
+````
 
 **Models (Data Models)**: Map json sang model sử dụng ![json_serializable](https://pub.dev/packages/json_serializable) để generate code.
 
