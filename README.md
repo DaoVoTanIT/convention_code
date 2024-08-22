@@ -72,8 +72,8 @@ String? avatarPath;
 
 ##### Bloc Events
 
-- Start with verb 
-- End with suffix **Event**
+- Bắt đầu bằng Verd
+- Kết thúc với hậu tố **Event**
 
 Example:
 ```
