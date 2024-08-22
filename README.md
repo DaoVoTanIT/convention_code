@@ -93,7 +93,7 @@ Example:
 ### Kiến trúc clean architecture
 The figure bellow represents the variation applied in this project:
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/f191eeac-0348-45e4-8ef6-3673612afcf3)
 
 Sử dụng 3 tầng: Presentation, Domain and Data.
 
