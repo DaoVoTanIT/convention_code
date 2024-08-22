@@ -47,7 +47,15 @@ import 'dart:html';
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 ```
-
+- Khai báo biến trong Screen tách biệt Bloc, Variable
+```dart
+ //Bloc
+  late UserBloc userBloc;
+  late EditUserBloc editUserBloc;
+  //Variable
+  String? id;
+  String? domain;
+```
 - Comment mô tả chức năng của các `Functions`, `Properties`.
 
 ````dart
