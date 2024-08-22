@@ -101,6 +101,34 @@ Sử dụng 3 tầng: Presentation, Domain and Data.
 
 - Quản lý trạng thái(State management)
 - Xử lý UI của ứng dụng, hiển thị dữ liệu,...
+
+````dart
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  LoginBloc() : super(LoginInitial()) {
+    on<LoginWithUserNamePassWordEvent>((event, emit) async {
+      emit(LoginLoading());
+      try {
+        var useCase = await GetIt.I.getAsync<LoginUseCase>();
+        final function = await useCase.call(ParamsLoginUseCase(userName: event.userName, passWord: event.passWord));
+        SmartDialog.showLoading(msg: 'loading'.tr());
+        function.fold((failure) {
+          SmartDialog.dismiss();
+          if (failure is ConnectionFailure) {
+            SmartDialog.showNotify(msg: 'noInternetConnection'.tr(), notifyType: NotifyType.warning);
+          } else {
+            emit(const LoginFailed(error: Constants.login));
+          }
+        }, (data) async {
+          emit(const LoginLoaded());
+        });
+      } catch (e) {
+        SmartDialog.dismiss();
+        emit(LoginFailed(error: e.toString()));
+      }
+    });
+  }
+}
+````
 ### Tầng Domain
 Ở tầng Domain này chúng ta sẽ có: 
 
