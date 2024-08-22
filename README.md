@@ -124,8 +124,7 @@ Là các lớp triển khai cụ thể của các abstract repositories, impleme
 Remote Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu từ xa, như API RESTful, ...
 Local Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu cục bộ như SQLite, SharedPreferences,...
 
-**Models (Data Models)**
-Quá trình cast dữ liệu từ API sử dụng ![json_serializable](https://pub.dev/packages/json_serializable) để generate code tương ứng cho models
+**Models (Data Models)**: Map json sang model sử dụng ![json_serializable](https://pub.dev/packages/json_serializable) để generate code.
 ## Cấu trúc source
 
 >
