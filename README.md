@@ -72,7 +72,7 @@ String? avatarPath;
 
 ##### Bloc Events
 
-- Bắt đầu bằng Verd
+- Bắt đầu bằng **Verd**
 - Kết thúc với hậu tố **Event**
 
 Example:
