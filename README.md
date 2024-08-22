@@ -142,7 +142,15 @@ Local Data Source: Chịu trách nhiệm làm việc với các nguồn dữ li�
       │   └── widget
       ├── feature                                       # Danh sách các tính năng của app
       │   ├── login
-      │   │   ├── bloc                                  # Bloc của tính năng (nhiều bloc khác nhau)
+      │   │   ├── data
+      │   │   │   ├── data_sources
+      │   │   │   ├── repository                        # Implement Repository
+      │   │   │   ├── model
+      │   │   ├── domain
+      │   │   │   ├── usecases
+      │   │   │   ├── repository                        # Interface Repository
+      │   │   ├── presentation
+      │   │   │   ├── bloc                              # Bloc của tính năng (nhiều bloc khác nhau)
       │   │   │   ├── export.dart                       # Export chung của Bloc
       │   │   │   ├── login_bloc.dart                   # Bloc xử lý của login feature
       │   │   │   ├── login_event.dart                  # Event Bloc của login feature
