@@ -108,11 +108,21 @@ Sử dụng 3 tầng: Presentation, Domain and Data.
 - Triển khai use cases
 - Triển khai interface repositories
 
-**1. Use case**: Tùy vào tính năng để có thể triển khai use case hay không.
+**Use case**: Tùy vào tính năng để có thể triển khai use case hay không.
 
 Ví dụ: Minh họa cho tác dụng của use cases là có logic logout tài khoản, ở đây phải thực hiện các công việc như: Xóa các thông tin lưu trữ về người dùng và hủy đăng ký fcm. Và trong ứng dụng có 2 nơi có thể bấm logout để thoát đăng nhập: 1 là ở trang profile, 2 là ở trang chủ cũng có nút cho phép logout. Nếu gặp phải trường hợp như này sẽ đơn giản khi có thể tái sử dụng 1 hàm xử lý LogoutUseCases duy nhất.Một UseCases luôn được định nghĩa rõ ràng đầu vào và đầu ra, chính vì thế nó cũng rất dễ dàng để có thể kiểm thử tại đây.
 ![image](https://github.com/user-attachments/assets/bfda5115-7f4e-4c52-980b-b16b193023f6)
-**2. Repository**: Tầng domain chỉ chứa các interface cho repo còn việc thực thi chúng thì nằm ở tầng data
+**Repository**: Tầng domain chỉ chứa các interface cho repo còn việc thực thi chúng thì nằm ở tầng data
+### Tầng Data
+Tầng Data thường được chia thành ba phần chính:
+
+**Repositories**
+Là các lớp triển khai cụ thể của các abstract repositories, implements phương thức định nghĩa trong abstract repositories. Ví dụ, UserRepositoryImpl có thể triển khai phương thức getUserById bằng cách gọi API hoặc cơ sở dữ liệu.
+**Data Sources**
+Remote Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu từ xa, như API RESTful, ...
+Local Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu cục bộ như SQLite, SharedPreferences,...
+**Models (Data Models)**
+Quá trình cast dữ liệu từ API sử dụng ![json_serializable](https://pub.dev/packages/json_serializable) để generate code tương ứng cho models
 ## Cấu trúc source
 
 >
