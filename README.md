@@ -114,11 +114,52 @@ Ví dụ: Minh họa cho tác dụng của use cases là có logic logout tài k
 ![image](https://github.com/user-attachments/assets/bfda5115-7f4e-4c52-980b-b16b193023f6)
 
 **Repository**: Tầng domain chỉ chứa các interface cho repo còn việc thực thi chúng thì nằm ở tầng data
+````dart
+abstract class AuthenticateRepository {
+  Future<Either<Failure, void>> login(String username, String passWord);
+  Future<Either<Failure, void>> signUp(String username, String passWord, String email);
+};
+````
 ### Tầng Data
 Tầng Data thường được chia thành ba phần chính:
 
 **Repositories**: Là các lớp triển khai cụ thể của các abstract repositories, implements phương thức định nghĩa trong abstract repositories.
+````dart
+class LoginRepositoryImpl implements AuthenticateRepository {
+  final AuthenticateDataSource authenticateDataSource;
+  final NetworkInfo networkInfo;
+  LoginRepositoryImpl({required this.authenticateDataSource, required this.networkInfo});
+  @override
+  Future<Either<Failure, void>> login(String username, String passWord) async {
+    final isConnected = await networkInfo.isConnected;
+    if (isConnected) {
+      try {
+        final result = await authenticateDataSource.login(username, passWord);
+        return Right(result);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(ConnectionFailure());
+    }
+  }
 
+  @override
+  Future<Either<Failure, void>> signUp(String phoneNumber, String passWord, String email) async {
+    final isConnected = await networkInfo.isConnected;
+    if (isConnected) {
+      try {
+        final result = await authenticateDataSource.signUp(phoneNumber, passWord, email);
+        return Right(result);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(ConnectionFailure());
+    }
+  }
+}
+````
 **Data Sources**:
 
 Remote Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu từ xa, như API RESTful, ...
@@ -126,6 +167,8 @@ Remote Data Source: Chịu trách nhiệm làm việc với các nguồn dữ li
 Local Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu cục bộ như SQLite, SharedPreferences,...
 
 **Models (Data Models)**: Map json sang model sử dụng ![json_serializable](https://pub.dev/packages/json_serializable) để generate code.
+
+Dựa vào type trả về của API để đặt tên cho model. Ví dụ: UserRes, UserReq,...
 ## Cấu trúc source
 
 >
