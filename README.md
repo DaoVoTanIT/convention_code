@@ -60,8 +60,6 @@ import 'package:foo/foo.dart';
 /// ABC XYZ.
 String? avatarPath;
 ````
-# Naming
-
 ### Bloc
 
 ##### Bloc Events
