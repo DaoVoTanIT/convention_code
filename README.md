@@ -37,15 +37,17 @@ void align(bool clearItems) {
 var foo = 'bar'; // Good
 var foo = "bar"; // Bad
 ```
-
-- Sắp xếp `import` đúng thứ tự
+- Không sử dụng list để đặt tên biến
 
 ```dart
-import 'dart:async';
-import 'dart:html';
+List<UserRes> users =[]; // Good
+List<UserRes> listUser =[]; // Bad
+```
+- Import đầy đủ path
 
-import 'package:bar/bar.dart';
-import 'package:foo/foo.dart';
+```dart
+import 'package:new_vime/feature/authenticate/domain/repository/authenticate_repository.dart';// Good
+import '../../repository/authenticate_repository.dart'; // Bad
 ```
 - Khai báo biến trong Screen tách biệt Bloc, Variable
 ```dart
