@@ -219,7 +219,7 @@ Dựa vào type trả về của API để đặt tên cho model. Ví dụ: User
       │   ├── preference                                # Function shared_preference
       │   ├── route                                     # Route cho toàn bộ app
       │   ├── util                                      # Các Function sử dụng lại
-      │   └── widget
+      │   └── widget                                    # Định nghĩa các widget chung
       ├── feature                                       # Danh sách các tính năng của app
       │   ├── login
       │   │   ├── data
@@ -228,18 +228,16 @@ Dựa vào type trả về của API để đặt tên cho model. Ví dụ: User
       │   │   │   ├── model
       │   │   ├── domain
       │   │   │   ├── usecases
-      │   │   │   ├── repository                        # Interface Repository
+      │   │   │   ├── repository                        # abstract class Repository
       │   │   ├── presentation
       │   │   │   ├── bloc                              # Bloc của tính năng (nhiều bloc khác nhau)
-      │   │   │   ├── export.dart                       # Export chung của Bloc
-      │   │   │   ├── login_bloc.dart                   # Bloc xử lý của login feature
-      │   │   │   ├── login_event.dart                  # Event Bloc của login feature
-      │   │   │   └── login_state.dart                  # State Bloc của login feature
-      │   │   ├── repository
-      │   │   │   └── login_repository.dart             # Repository (sử dụng để call API Login)
-      │   │   └── screen
-      │   │   │   └── login.dart                        # Screen chính login tổng hợp từ các widget
-      │   │   └── widget
-      │   │       └── button_login.dart                 # Widget của screen login
+      │   │   │   │   ├── export.dart                   # Export chung của Bloc
+      │   │   │   │   ├── login_bloc.dart               # Bloc xử lý của login feature
+      │   │   │   │   ├── login_event.dart              # Event Bloc của login feature
+      │   │   │   │   ├── login_state.dart              # State Bloc của login feature
+      │   │   │   ├── screen
+      │   │   │   │   ├── login_screen.dart 
+      │   │   │   │   ├── widget
+      │   │   │   │   │   ├── button_login_widget.dart  # Widget của screen login
       │   └── ...
       └── translations                                  # Cấu hình đa ngôn ngữ
