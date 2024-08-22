@@ -91,7 +91,6 @@ Example:
 - LoadFailed
 ```
 ### Kiến trúc clean architecture
-The figure bellow represents the variation applied in this project:
 
 ![image](https://github.com/user-attachments/assets/f191eeac-0348-45e4-8ef6-3673612afcf3)
 
@@ -111,6 +110,7 @@ Sử dụng 3 tầng: Presentation, Domain and Data.
 **Use case**: Tùy vào tính năng để có thể triển khai use case hay không.
 
 Ví dụ: Minh họa cho tác dụng của use cases là có logic logout tài khoản, ở đây phải thực hiện các công việc như: Xóa các thông tin lưu trữ về người dùng và hủy đăng ký fcm. Và trong ứng dụng có 2 nơi có thể bấm logout để thoát đăng nhập: 1 là ở trang profile, 2 là ở trang chủ cũng có nút cho phép logout. Nếu gặp phải trường hợp như này sẽ đơn giản khi có thể tái sử dụng 1 hàm xử lý LogoutUseCases duy nhất.Một UseCases luôn được định nghĩa rõ ràng đầu vào và đầu ra, chính vì thế nó cũng rất dễ dàng để có thể kiểm thử tại đây.
+
 ![image](https://github.com/user-attachments/assets/bfda5115-7f4e-4c52-980b-b16b193023f6)
 
 **Repository**: Tầng domain chỉ chứa các interface cho repo còn việc thực thi chúng thì nằm ở tầng data
