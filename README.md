@@ -119,7 +119,8 @@ Tầng Data thường được chia thành ba phần chính:
 
 **Repositories**: Là các lớp triển khai cụ thể của các abstract repositories, implements phương thức định nghĩa trong abstract repositories.
 
-**Data Sources**
+**Data Sources**:
+
 Remote Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu từ xa, như API RESTful, ...
 Local Data Source: Chịu trách nhiệm làm việc với các nguồn dữ liệu cục bộ như SQLite, SharedPreferences,...
 
