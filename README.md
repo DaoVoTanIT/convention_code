@@ -43,7 +43,7 @@ var foo = "bar"; // Bad
 List<UserRes> users =[]; // Good
 List<UserRes> listUser =[]; // Bad
 ```
-- Import đầy đủ path
+- Absolute imports (hoặc package imports)
 
 ```dart
 import 'package:new_vime/feature/authenticate/domain/repository/authenticate_repository.dart';// Good
