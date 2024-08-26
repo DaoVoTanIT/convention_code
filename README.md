@@ -90,7 +90,7 @@ Example:
 ```
 - Loading
 - Loaded
-- LoadFailed
+- Failed
 ```
 ### Kiến trúc clean architecture
 
